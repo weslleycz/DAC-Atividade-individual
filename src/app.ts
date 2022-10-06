@@ -26,6 +26,7 @@ app.use((req, res, next) => {
 
 const options = {
   viewsDirectory: path.resolve(__dirname, "./views"),
+  prettify: true,
 };
 
 setupReactViews(app, options);
@@ -37,8 +38,9 @@ app.get("/", (req, res, next) => {
 
 app.use(express.json({ limit: "200mb" }));
 
-app.get("/static/index.css", function (req, res) {
-  res.sendFile(path.join(statics, "index.css"));
+app.get("/static/:file", function (req, res) {
+  const file = req.params.file;
+  res.sendFile(path.join(statics, file));
 });
 
 app.use("/static", express.static(statics));
