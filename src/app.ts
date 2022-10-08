@@ -7,6 +7,7 @@ import open from "open";
 import { router } from "./routes";
 import { Props } from "./views/home";
 
+
 const port = 3000;
 
 const statics = path.join(__dirname, "./public");
